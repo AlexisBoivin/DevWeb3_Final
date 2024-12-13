@@ -36,7 +36,7 @@ const Formulaire = (props: IFormulaireProps) => {
      * Elle envoit les informations contenue dans le formulaire d'Ajout de personnage dans le body de la requête.
      */
     function ajouterPersonnage(){
-        axios.post("http://localhost:3000/pnj/",{
+        axios.post("https://devweb3-api.onrender.com/pnj/",{
             "pnj" : {
                 "nom": {
                     "prenom": formulairePrenom,
@@ -49,11 +49,15 @@ const Formulaire = (props: IFormulaireProps) => {
                 "pouvoirs":tableauPouvoir,
                 "resume": formulaireResume
             }
-        } )
+        }, {
+            headers: {
+              Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.c21heHdlbGxAZXhhbXBsZS5jb20.wPOG0anqEuMTZTb0IcJBIul93UBWlnNg9JRXH_xXHcw`
+            }
+          } )
     }
 
     function modifierPersonnage(){
-        axios.put("http://localhost:3000/pnj/" + props.identifiant,{
+        axios.put("https://devweb3-api.onrender.com/pnj/" + props.identifiant,{
             "pnj" : {
                 "nom": {
                     "prenom": formulairePrenom,
@@ -66,7 +70,12 @@ const Formulaire = (props: IFormulaireProps) => {
                 "pouvoirs":tableauPouvoir,
                 "resume": formulaireResume
             }
-        } )
+        },   {
+            headers: {
+              Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.c21heHdlbGxAZXhhbXBsZS5jb20.wPOG0anqEuMTZTb0IcJBIul93UBWlnNg9JRXH_xXHcw`
+            }
+          } )
+          
     }
 
   

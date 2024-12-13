@@ -1,6 +1,11 @@
+URL de l'application en ligne
+https://encyclo-pnj.netlify.app/
+
 Procédure d’installation de l’application sur un poste local
 
-    
+git clone https://github.com/AlexisBoivin/DevWeb3_Final.git
+
+npm install
 
 
 Description sommaire de l’application publiée

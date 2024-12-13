@@ -6,10 +6,6 @@ import Personnage from './components/personnage'
 import Formulaire from './components/formulaire'
 import { Card, Grid } from '@mui/material'
 import { FormattedMessage } from 'react-intl'
-// import { IPouvoirProps } from './components/pouvoir'
-// import { HomeRoute } from './routes/home.route';
-// import Login from './routes/login.route';
-// import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
   const [lesPersonnages, setLesPersonnages] = useState<any[]>([])
@@ -20,16 +16,16 @@ function App() {
   const [indexAModifier, setIndexAModifier] = useState(0);
   const [entrainModifier, setEntrainModifier] = useState(false);
 
-  const [ajoutreussi, setAjoutreussi] = useState(false);
-
- // axios.defaults.headers.common['Authorization'] = "Bearer eyJhbGciOiJIUzI1NiJ9.c21heHdlbGxAZXhhbXBsZS5jb20.wPOG0anqEuMTZTb0IcJBIul93UBWlnNg9JRXH_xXHcw";
+  const [messageErreur, setMessageErreur] = useState("");
 
   function trouverId(){
-    axios.get('https://devweb3-api.onrender.com/pnj/'+ getid, {headers: {
-      Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.c21heHdlbGxAZXhhbXBsZS5jb20.wPOG0anqEuMTZTb0IcJBIul93UBWlnNg9JRXH_xXHcw"
-   }})
-    .then((response) =>{ setLesPersonnages([response.data.pnj])})
-    .catch((error) => console.error('Error:', error));
+    axios.get('https://devweb3-api.onrender.com/pnj/'+ getid,   {
+      headers: {
+        Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.c21heHdlbGxAZXhhbXBsZS5jb20.wPOG0anqEuMTZTb0IcJBIul93UBWlnNg9JRXH_xXHcw`
+      }
+    } )
+    .then((response) =>{ setLesPersonnages([response.data.pnj]); setMessageErreur("")})
+    .catch((error) => {console.error('Error:', error); setMessageErreur("message.erreur.id")});
   }
 
   function trouverTout(){
@@ -38,18 +34,18 @@ function App() {
         Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.c21heHdlbGxAZXhhbXBsZS5jb20.wPOG0anqEuMTZTb0IcJBIul93UBWlnNg9JRXH_xXHcw`
       }
     })
-    .then((response) => {setLesPersonnages(response.data.pnjs)})
-    .catch((error) => console.error('Error:', error));
+    .then((response) => {setLesPersonnages(response.data.pnjs); setMessageErreur("")})
+    .catch((error) => {console.error('Error:', error); setMessageErreur("message.erreur.tout")});
   }
 
   function trouverSelonDefi(){
-    axios.get('https://devweb3-api.onrender.com/pnj/defi/' + niveauDefi,  {
+    axios.get('https://devweb3-api.onrender.com/pnj/defi/' + niveauDefi,   {
       headers: {
         Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.c21heHdlbGxAZXhhbXBsZS5jb20.wPOG0anqEuMTZTb0IcJBIul93UBWlnNg9JRXH_xXHcw`
       }
     })
     .then((response) => {setLesPersonnages(response.data.pnjs)})
-    .catch((error) => console.error('Error:', error))
+    .catch((error) => {console.error('Error:', error); setMessageErreur("message.erreur.defi")})
   }
 
   function trouverSiVivant(){
@@ -66,7 +62,7 @@ function App() {
       }
     })
     .then((response) => {setLesPersonnages(response.data.pnjs)})
-    .catch((error) => console.error('Error:', error))
+    .catch((error) => {console.error('Error:', error); setMessageErreur("message.erreur.vivant")})
   }
 
 
@@ -77,7 +73,7 @@ function App() {
       }
     })
     .then((response) => console.log(response))
-    .catch((error) => console.error('Error:', error))
+    .catch((error) => {console.error('Error:', error); setMessageErreur("message.erreur.supprimer")})
   }
 
   return (
@@ -89,7 +85,9 @@ function App() {
       </div>
       <h1><FormattedMessage id="app.titre" defaultMessage="Encyclo-PNJ" /></h1>
       <h4><FormattedMessage id="app.soustitre" defaultMessage="L'outil de gestion de personnage non-joueurs pour les Maitres de jeu."></FormattedMessage></h4>
-      
+      <div className='messageErreur'>
+        <p><FormattedMessage id={messageErreur} defaultMessage="" /></p>
+      </div>
       <div>
         <button onClick={() => trouverId()}>
           <FormattedMessage id="app.bouton.getId" defaultMessage="Trouver à partir de l'identifiant:"></FormattedMessage>

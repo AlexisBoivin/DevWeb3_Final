@@ -23,5 +23,10 @@
     "formulaire.bouton.pouvoir.ajouter": "Ajouter un pouvoir",
     "formulaire.bouton.pouvoir.retirer": "Retirer un pouvoir",
     "formulaire.bouton.personnage.ajouter": "Ajouter le personnage",
-    "formulaire.botuon.personnage.modifier": "Modifier le personnage"
+    "formulaire.bouton.personnage.modifier": "Modifier le personnage",
+    "message.erreur.id": "Il semble y avoir eu une erreur lors de la récupération du personnage.",
+    "message.erreur.tout": "Il semble y avoir eu une erreur lors de la récupération des personnage.",
+    "message.erreur.defi": "Il semble y avoir eu une erreur lors de la récupération des personnage selon leur niveau de défi.",
+    "message.erreur.vivant": "Il semble y avoir eu une erreur lors de la récupération du personnage selon leur statut en vie.",
+    "message.erreur.supprimer": "Il semble y avoir eu une erreur lors de la suppression du personnage."
 }

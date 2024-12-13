@@ -23,5 +23,10 @@
     "formulaire.bouton.pouvoir.ajouter": "Add a power",
     "formulaire.bouton.pouvoir.retirer": "Remove a power",
     "formulaire.bouton.personnage.ajouter": "Add the character",
-    "formulaire.botuon.personnage.modifier": "Update the character"
+    "formulaire.bouton.personnage.modifier": "Update the character",
+    "message.erreur.id": "It seems an error occured while trying to get the characters.",
+    "message.erreur.tout": "It seems an error occured while trying to get the characters.",
+    "message.erreur.defi": "It seems an error occured while trying to get the characters by their challenge level.",
+    "message.erreur.vivant": "It seems an error occured while trying to get the characters by their alive status.",
+    "message.erreur.supprimer": "It seems an error occured while trying to delete the characters."
 }
