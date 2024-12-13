@@ -16,7 +16,7 @@ function App() {
   const [indexAModifier, setIndexAModifier] = useState(0);
   const [entrainModifier, setEntrainModifier] = useState(false);
 
-  const [messageErreur, setMessageErreur] = useState("");
+  const [messageErreur, setMessageErreur] = useState("1");
 
   function trouverId(){
     axios.get('https://devweb3-api.onrender.com/pnj/'+ getid,   {
@@ -24,7 +24,7 @@ function App() {
         Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.c21heHdlbGxAZXhhbXBsZS5jb20.wPOG0anqEuMTZTb0IcJBIul93UBWlnNg9JRXH_xXHcw`
       }
     } )
-    .then((response) =>{ setLesPersonnages([response.data.pnj]); setMessageErreur("")})
+    .then((response) =>{ setLesPersonnages([response.data.pnj]); setMessageErreur("1")})
     .catch((error) => {console.error('Error:', error); setMessageErreur("message.erreur.id")});
   }
 
@@ -34,7 +34,7 @@ function App() {
         Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.c21heHdlbGxAZXhhbXBsZS5jb20.wPOG0anqEuMTZTb0IcJBIul93UBWlnNg9JRXH_xXHcw`
       }
     })
-    .then((response) => {setLesPersonnages(response.data.pnjs); setMessageErreur("")})
+    .then((response) => {setLesPersonnages(response.data.pnjs); setMessageErreur("1")})
     .catch((error) => {console.error('Error:', error); setMessageErreur("message.erreur.tout")});
   }
 
@@ -44,7 +44,7 @@ function App() {
         Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.c21heHdlbGxAZXhhbXBsZS5jb20.wPOG0anqEuMTZTb0IcJBIul93UBWlnNg9JRXH_xXHcw`
       }
     })
-    .then((response) => {setLesPersonnages(response.data.pnjs)})
+    .then((response) => {setLesPersonnages(response.data.pnjs); setMessageErreur("1")})
     .catch((error) => {console.error('Error:', error); setMessageErreur("message.erreur.defi")})
   }
 
@@ -61,7 +61,7 @@ function App() {
         Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.c21heHdlbGxAZXhhbXBsZS5jb20.wPOG0anqEuMTZTb0IcJBIul93UBWlnNg9JRXH_xXHcw`
       }
     })
-    .then((response) => {setLesPersonnages(response.data.pnjs)})
+    .then((response) => {setLesPersonnages(response.data.pnjs); setMessageErreur("1")})
     .catch((error) => {console.error('Error:', error); setMessageErreur("message.erreur.vivant")})
   }
 
@@ -72,7 +72,7 @@ function App() {
         Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.c21heHdlbGxAZXhhbXBsZS5jb20.wPOG0anqEuMTZTb0IcJBIul93UBWlnNg9JRXH_xXHcw`
       }
     })
-    .then((response) => console.log(response))
+    .then((response) => {console.log(response); setMessageErreur("1")})
     .catch((error) => {console.error('Error:', error); setMessageErreur("message.erreur.supprimer")})
   }
 
