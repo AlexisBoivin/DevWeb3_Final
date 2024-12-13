@@ -43,7 +43,11 @@ function App() {
   }
 
   function trouverSelonDefi(){
-    axios.get('https://devweb3-api.onrender.com/pnj/defi/' + niveauDefi)
+    axios.get('https://devweb3-api.onrender.com/pnj/defi/' + niveauDefi,  {
+      headers: {
+        Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.c21heHdlbGxAZXhhbXBsZS5jb20.wPOG0anqEuMTZTb0IcJBIul93UBWlnNg9JRXH_xXHcw`
+      }
+    })
     .then((response) => {setLesPersonnages(response.data.pnjs)})
     .catch((error) => console.error('Error:', error))
   }
@@ -56,14 +60,22 @@ function App() {
     else{
       parametre = "non";
     }
-    axios.get('https://devweb3-api.onrender.com/pnj/vivant/' + parametre)
+    axios.get('https://devweb3-api.onrender.com/pnj/vivant/' + parametre,   {
+      headers: {
+        Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.c21heHdlbGxAZXhhbXBsZS5jb20.wPOG0anqEuMTZTb0IcJBIul93UBWlnNg9JRXH_xXHcw`
+      }
+    })
     .then((response) => {setLesPersonnages(response.data.pnjs)})
     .catch((error) => console.error('Error:', error))
   }
 
 
   function supprimerPersonnage(identifiant:number){
-    axios.delete('https://devweb3-api.onrender.com/pnj/' + identifiant)
+    axios.delete('https://devweb3-api.onrender.com/pnj/' + identifiant,   {
+      headers: {
+        Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.c21heHdlbGxAZXhhbXBsZS5jb20.wPOG0anqEuMTZTb0IcJBIul93UBWlnNg9JRXH_xXHcw`
+      }
+    })
     .then((response) => console.log(response))
     .catch((error) => console.error('Error:', error))
   }
