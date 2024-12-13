@@ -30,11 +30,11 @@ var estVivant;
       
         <div className="info">
           <Nom prenom={props.nom.prenom} nomfamille={props.nom.nomfamille}></Nom>
-          <p className=""><FormattedDate value={props.dateAjout} year="numeric" month="long" day="2-digit"/></p>
-          <p className="">{props.niveauDefi}</p>
+          <p className="">Date d'ajout: <FormattedDate value={props.dateAjout} year="numeric" month="long" day="2-digit"/></p>
+          <p className="">Niveau de défi: {props.niveauDefi}</p>
           <p className="">{estVivant}</p>
-          <p className="">{props.pointVie}</p>
-          <p className="">{props.resume}</p>
+          <p className="">Points de vie: {props.pointVie}</p>
+          <p className="">Résumé: {props.resume}</p>
           {(props.pouvoir ?? []).map((element, index) => {return(
             <Pouvoir 
               key={index}
